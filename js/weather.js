@@ -12,13 +12,6 @@ const app = {
             .addEventListener('click', app.getLocation);
     },
     fetchWeather: (ev) => {
-        document
-            .getElementById('loading')
-            .classList
-            .remove('hide');
-        ev.preventDefault();
-        ev.stopPropagation();
-        ev.stopImmediatePropagation();
         //use the values from latitude and longitude to fetch the weather
         let lat = document.getElementById('latitude').value;
         let lon = document.getElementById('longitude').value;
@@ -36,29 +29,14 @@ const app = {
                 app.showWeather(data);
             })
             .catch(console.err);
-        document
-            .getElementById('loading')
-            .classList
-            .add('hide');
     },
     getLocation: (ev) => {
-        document
-            .getElementById('loading')
-            .classList
-            .remove('hide');
-        ev.preventDefault();
-        ev.stopPropagation();
-        ev.stopImmediatePropagation();
         let opts = {
             enableHighAccuracy: true,
             timeout: 1000 * 10, //10 seconds
             maximumAge: 1000 * 60 * 5, //5 minutes
         };
         navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError, opts);
-        document
-            .getElementById('loading')
-            .classList
-            .add('hide');
     },
     onSuccess: (position) => {
         //got position
@@ -73,61 +51,43 @@ const app = {
     },
     showWeather: (resp) => {
         console.log(resp);
-        let today = document.querySelector('.today');
-        let week = document.querySelector('.week');
-        function convertCtoF (C) {
-            return parseInt(C * 9 / 5 + 32);
-        }
+        let row = document.querySelector('.weather.row');
         //clear out the old weather and add the new
-        today.innerHTML = resp.daily
+        // row.innerHTML = '';
+        row.innerHTML = resp.daily
             .map((day, idx) => {
-                let dt = new Date(day.dt * 1000); //timestamp * 1000
-                const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-                if (idx == 0) { // show current day forecast
-                    return `<div class="card col s12 m6 offset-m3 l6 offset-l3 primary-color white-text">
-                    <div class="card-content">
-                        <h6>${resp.timezone}</h6>
-                        <h2 style="margin: 0;"><b>${convertCtoF(day.temp.day)}&deg;F</b></h2>
-                        <img
-                            src="http://openweathermap.org/img/wn/${day.weather[0].icon
+                if (idx <= 2) {
+                    let dt = new Date(day.dt * 1000); //timestamp * 1000
+                    let sr = new Date(day.sunrise * 1000).toTimeString();
+                    let ss = new Date(day.sunset * 1000).toTimeString();
+                    return `<div class="col">
+                <div class="card">
+                <h5 class="card-title p-2">${dt.toDateString()}</h5>
+                  <img
+                    src="http://openweathermap.org/img/wn/${day.weather[0].icon
                         }@4x.png"
-                            class="card-image"
-                            alt="${day.weather[0].description}"
-                        />
-                        <h5 style="margin: 0;">${day.weather[0].main}</h5>
-                    </div>
-                </div>`;
-                }
-            })
-            .join(' ');
-        week.innerHTML = resp.daily
-            .map((day, idx) => {
-                let dt = new Date(day.dt * 1000); //timestamp * 1000
-                const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-                if (idx <= 7) {
-                    return `<div class="col s6 m3">
-                        <div class="card">
-                        <div class="card-title">
-                        <h5>${weekday[dt.getDay()]}</h5>
-                        <h6>${dt.toLocaleDateString('en-US')}</h6>
-                        <img
-                            src="http://openweathermap.org/img/wn/${day.weather[0].icon
-                        }@4x.png"
-                            class="card-image"
-                            alt="${day.weather[0].description}"
-                        />
-                        <h4>${day.weather[0].main}</h4>
-                        </div>
-                        <div class="card-content">
-                            <p class="card-text">High ${convertCtoF(day.temp.max)}&deg;F Low ${convertCtoF(day.temp.min)
-                        }&deg;F</p>
-                            <p class="card-text">High Feels like ${convertCtoF(day.feels_like.day)
-                        }&deg;F</p>
-                            <p class="card-text">Precipitation ${day.pop * 100}%</p>
-                        </div>
-                        </div>
-                    </div>
-                    </div>`;
+                    class="card-img-top"
+                    alt="${day.weather[0].description}"
+                  />
+                  <div class="card-body">
+                    <h3 class="card-title">${day.weather[0].main}</h3>
+                    <p class="card-text">High ${day.temp.max}&deg;C Low ${day.temp.min
+                        }&deg;C</p>
+                    <p class="card-text">High Feels like ${day.feels_like.day
+                        }&deg;C</p>
+                    <p class="card-text">Pressure ${day.pressure}mb</p>
+                    <p class="card-text">Humidity ${day.humidity}%</p>
+                    <p class="card-text">UV Index ${day.uvi}</p>
+                    <p class="card-text">Precipitation ${day.pop * 100}%</p>
+                    <p class="card-text">Dewpoint ${day.dew_point}</p>
+                    <p class="card-text">Wind ${day.wind_speed}m/s, ${day.wind_deg
+                        }&deg;</p>
+                    <p class="card-text">Sunrise ${sr}</p>
+                    <p class="card-text">Sunset ${ss}</p>
+                  </div>
+                </div>
+              </div>
+            </div>`;
                 }
             })
             .join(' ');

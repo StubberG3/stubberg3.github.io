@@ -17,7 +17,6 @@
     <style>
         :root {
             --primary-color: #4e406a;
-            background-color: #efefef;
         }
 
         .primary-color {
@@ -27,56 +26,48 @@
         .primary-color-text {
             color: var(--primary-color);
         }
-
-        .weather-container {
-            background-color: #fff;
-            margin: 0 auto;
-        }
-
-        .temperature {
-            font-weight: bold;
-        }
-
-        .weather-details {
-            color: #2f2f2f;
-            font-size: 1.2rem;
-        }
-
-        .week img.card-image {
-            max-width: 100%;
-        }
-
-        .today img.card-image {
-            max-width: 100px;
-        }
-
-        @media screen and (max-width: 771px) {
-            .btn {
-                margin-bottom: 20px;
-                height: 100%;
-            }
-        }
     </style>
 </head>
 
 <body>
     <div id="app">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo">Logo</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="#!">Link 1</a></li>
+            <li><a href="#!">Link 2</a></li>
+            <li><a href="#!">Link 3</a></li>
+            <li><a href="#!">Link 4</a></li>
+        </ul>
+
         <main class="container">
-            <h3>OpenWeatherMap.org API</h3>
-            <p><a href="../index.html">Back to home</a></p>
+            <h1>OpenWeatherMap.org API</h1>
+
             <section class="filter">
-                <div class="row white center-align" style="border-radius: 5px;">
+                <div class="row center-align">
                     <div class="input-field col s6">
                         <i class="fa fa-arrows-left-right prefix"></i>
-                        <input id="latitude" type="number" class="validate" placeholder="Enter Latitude e.g. 39.9526"
-                            aria-label="latitude" aria-describedby="latitude" value="39.9626">
+                        <input id="latitude" type="text" class="validate" inputmode="numeric"
+                            placeholder="Enter Latitude e.g. 42.42" aria-label="latitude" aria-describedby="latitude"
+                            value="42.42">
                         <label for="latitude">Latitude</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="fa fa-arrows-up-down prefix"></i>
-                        <input id="longitude" type="number" class="validate"
-                            placeholder="Enter Longitude e.g., -75.1652" aria-label="longitude"
-                            aria-describedby="longitude" value="-75.1652">
+                        <input id="longitude" type="text" class="validate" inputmode="numeric"
+                            placeholder="Enter Longitude e.g., 42.42" aria-label="longitude"
+                            aria-describedby="longitude" value="42.42">
                         <label for="longitude">Longitude</label>
                     </div>
                 </div>
@@ -95,18 +86,80 @@
                 </div>
             </section>
 
-            <div id="loading" class="progress hide">
-                <div class="indeterminate purple"></div>
-            </div>
-
             <!-- results for weather data -->
-            <section>
-                <div class="today row center-align"></div>
-            </section>
-            <section>
-                <div class="week row center-align"></div>
+            <section class="weather">
+                <h2>Weather</h2>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card-panel primary-color white-text">
+                            <h6>HighFeels like</h6>
+                            <span>80&deg;</span>
+                        </div>
+                    </div>
+                    <div class="col s12 m6">
+                        <div class="card-panel primary-color white-text">
+                            <h6>LowFeels like</h6>
+                            <h6>60&deg;</h6>
+                        </div>
+                    </div>
+                    <div class="col s12 m6">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="http://openweathermap.org/img/wn/10d@4x.png" class=""
+                                    alt="Weather description" />
+                            </div>
+                            <div class="card-title">Weather Label</div>
+                            <div class="card-content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum a
+                                illum
+                                delectus dignissimos quo obcaecati iure, tempore blanditiis ut mollitia veritatis labore
+                                deleniti aliquam cumque aut debitis aperiam veniam similique!</div>
+                        </div>
+                    </div>
+                    <div class="card col s12 m6">
+                        <div class="card-image">
+                            <img src="http://openweathermap.org/img/wn/10d@4x.png" class="" alt="Weather description" />
+                        </div>
+                        <div class="card-title">Weather Label</div>
+                        <div class="card-content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum a illum
+                            delectus dignissimos quo obcaecati iure, tempore blanditiis ut mollitia veritatis labore
+                            deleniti aliquam cumque aut debitis aperiam veniam similique!</div>
+                    </div>
+                    <!-- <div class="card">
+                        <h5 class="card-title">Date</h5>
+                        <div class="card-content">
+                            <h3 class="">Weather Label</h3>
+                            <p class="">High Temp Low Temp</p>
+                            <p class="">HighFeels like</p>
+                            <p class="">Pressure</p>
+                            <p class="">Humidty</p>
+                            <p class="">UV Index</p>
+                            <p class="">Precipitation</p>
+                            <p class="">Dew Point</p>
+                            <p class="">Wind speed and direction</p>
+                            <p class="">Sunrise</p>
+                            <p class="">Sunset</p>
+                        </div>
+                    </div> -->
+                </div>
             </section>
         </main>
+
+        <footer class="primary-color">
+            <div class="row align-items-center">
+                <div class="col">
+                    <img src="http://openweathermap.org/img/wn/10d.png" alt="demo icon" />
+                    <span>10d.png</span>
+                </div>
+                <div class="col">
+                    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="demo icon" />
+                    <span>10d@2x.png</span>
+                </div>
+                <div class="col">
+                    <img src="http://openweathermap.org/img/wn/10d@4x.png" alt="demo icon" />
+                    <span>10d@4x.png</span>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <script src=" https://code.jquery.com/jquery-3.7.1.min.js"
