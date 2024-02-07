@@ -214,10 +214,6 @@ a {
     margin: 0 auto;
 }
 
-.primary-color {
-    background-color: var(--primary-color);
-}
-
 .primary-color-text {
     color: var(--primary-color);
 }
