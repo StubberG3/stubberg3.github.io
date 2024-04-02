@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Gregg Stubberfield • Front-end Web Developer</title>
+    <meta name="description" content="Web Developer portfolio for Gregg Stubberfield">
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+    <meta content='Front-end Web Developer working remotely in Yardley, Pennsylvania.' name='description'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons&Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link href='../css/materialize.css' rel='stylesheet'>
+    <style>
+        :root {
+            --primary-color: #4e406a;
+        }
+
+        .primary-color {
+            background-color: var(--primary-color);
+        }
+
+        .primary-color-text {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo">Logo</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="#!">Link 1</a></li>
+            <li><a href="#!">Link 2</a></li>
+            <li><a href="#!">Link 3</a></li>
+            <li><a href="#!">Link 4</a></li>
+        </ul>
+
+        <main class="container">
+            <h1>OpenWeatherMap.org API</h1>
+
+            <section class="filter">
+                <div class="row center-align">
+                    <div class="input-field col s6">
+                        <i class="fa fa-arrows-left-right prefix"></i>
+                        <input id="latitude" type="text" class="validate" inputmode="numeric"
+                            placeholder="Enter Latitude e.g. 42.42" aria-label="latitude" aria-describedby="latitude"
+                            value="42.42">
+                        <label for="latitude">Latitude</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="fa fa-arrows-up-down prefix"></i>
+                        <input id="longitude" type="text" class="validate" inputmode="numeric"
+                            placeholder="Enter Longitude e.g., 42.42" aria-label="longitude"
+                            aria-describedby="longitude" value="42.42">
+                        <label for="longitude">Longitude</label>
+                    </div>
+                </div>
+
+                <div class="row center-align">
+                    <div class="col s12">
+                        <button id="btnGet" type="submit" class="btn primary-color">
+                            Get Weather
+                            <i class="fa fa-send right"></i>
+                        </button>
+                        <button id="btnCurrent" type="submit" class="btn primary-color">
+                            Use Current Location
+                            <i class="fa fa-location-dot right"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- results for weather data -->
+            <section class="weather">
+                <h2>Weather</h2>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card-panel primary-color white-text">
+                            <h6>HighFeels like</h6>
+                            <span>80&deg;</span>
+                        </div>
+                    </div>
+                    <div class="col s12 m6">
+                        <div class="card-panel primary-color white-text">
+                            <h6>LowFeels like</h6>
+                            <h6>60&deg;</h6>
+                        </div>
+                    </div>
+                    <div class="col s12 m6">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="http://openweathermap.org/img/wn/10d@4x.png" class=""
+                                    alt="Weather description" />
+                            </div>
+                            <div class="card-title">Weather Label</div>
+                            <div class="card-content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum a
+                                illum
+                                delectus dignissimos quo obcaecati iure, tempore blanditiis ut mollitia veritatis labore
+                                deleniti aliquam cumque aut debitis aperiam veniam similique!</div>
+                        </div>
+                    </div>
+                    <div class="card col s12 m6">
+                        <div class="card-image">
+                            <img src="http://openweathermap.org/img/wn/10d@4x.png" class="" alt="Weather description" />
+                        </div>
+                        <div class="card-title">Weather Label</div>
+                        <div class="card-content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum a illum
+                            delectus dignissimos quo obcaecati iure, tempore blanditiis ut mollitia veritatis labore
+                            deleniti aliquam cumque aut debitis aperiam veniam similique!</div>
+                    </div>
+                    <!-- <div class="card">
+                        <h5 class="card-title">Date</h5>
+                        <div class="card-content">
+                            <h3 class="">Weather Label</h3>
+                            <p class="">High Temp Low Temp</p>
+                            <p class="">HighFeels like</p>
+                            <p class="">Pressure</p>
+                            <p class="">Humidty</p>
+                            <p class="">UV Index</p>
+                            <p class="">Precipitation</p>
+                            <p class="">Dew Point</p>
+                            <p class="">Wind speed and direction</p>
+                            <p class="">Sunrise</p>
+                            <p class="">Sunset</p>
+                        </div>
+                    </div> -->
+                </div>
+            </section>
+        </main>
+
+        <footer class="primary-color">
+            <div class="row align-items-center">
+                <div class="col">
+                    <img src="http://openweathermap.org/img/wn/10d.png" alt="demo icon" />
+                    <span>10d.png</span>
+                </div>
+                <div class="col">
+                    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="demo icon" />
+                    <span>10d@2x.png</span>
+                </div>
+                <div class="col">
+                    <img src="http://openweathermap.org/img/wn/10d@4x.png" alt="demo icon" />
+                    <span>10d@4x.png</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src=" https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://kit.fontawesome.com/1b2c37e814.js" crossorigin="anonymous"></script>
+    <script src="../js/weather.js" defer></script>
+</body>
+
+</html>
