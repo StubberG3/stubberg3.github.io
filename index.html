@@ -33,12 +33,19 @@
         .flex-column {
             display: flex;
             flex-direction: column;
-            flex: 1 1 50%;
             justify-content: center;
         }
 
+        .flex-column.left-column {
+            flex: 1 1 33%;
+        }
+
+        .flex-column.right-column {
+            flex: 1 1 67%;
+        }
+
         .content {
-            padding: 60px;
+            padding: 2rem;
             max-width: 600px;
             margin: 0 auto
         }
@@ -116,6 +123,12 @@
             z-index: 1;
         }
 
+        @media screen and (max-width: 601px) {
+            .top-nav {
+                display: block;
+            }
+        }
+
         .top-nav * {
             box-sizing: border-box;
             -webkit-transition: all 0.35s ease;
@@ -172,13 +185,13 @@
             transform: translateY(-100%);
         }
 
-        @media screen and (min-width: 771px) {
+        /* @media screen and (min-width: 771px) {
             .nav {
                 position: absolute;
                 top: 0;
                 right: 0;
             }
-        }
+        } */
 
         .btn.dropdown-trigger {
             border-radius: 25px;
@@ -211,8 +224,8 @@
                     <div class="avatar-and-name-container">
                         <img class="avatar" src="images/avatar.png" alt="Avatar of Gregg Stubberfield">
                         <div class="name-container white-text">
-                            <h2 class="name no-margin">Gregg Stubberfield</h1>
-                                <h5 class="title">Web Developer</h5>
+                            <h3 class="name no-margin">Gregg Stubberfield</h3>
+                            <h5 class="title">Web Developer</h5>
                         </div>
                     </div>
                     <ul class="social">
@@ -237,49 +250,30 @@
                 </div>
             </div>
             <div class="flex-column right-column">
-                <!-- Dropdown Trigger -->
-                <a class='primary-color dropdown-trigger btn hide-on-med-and-up' href='#' data-target='dropdown'>
-                    <i class="material-icons">menu</i>
-                </a>
-
-                <!-- Dropdown Structure -->
-                <ul id='dropdown' class='dropdown-content hide-on-med-and-up'>
-                    <li class="nav-item active" data-nav-item="home"><a id="home" data-hover="Home" href="#!"
-                            class="nav-link">Home</a></li>
-                    <li class="nav-item" data-nav-item="about"><a id="about" data-hover="About" href="#!"
-                            class="nav-link">About</a>
-                    </li>
-                    <li><a href="docs/Gregg_Stubberfield_Resume.pdf" data-hover="Resume" target="_blank">Resume</a>
-                    </li>
-                    <li><a href="https://weather-app-sbcg.onrender.com/" data-hover="Projects" target="_blank">Projects</a></li>
-                    <li><a href="mailto:stubberg3@gmail.com?subject=I have an opportunity for you&body=Hi Gregg,%0A%0AI was looking at your website and..."
-                            data-hover="Contact" title="email">Contact</a></li>
-                </ul>
-
-                <div class="nav hide-on-small-only">
+                <div class="nav">
                     <ul class="top-nav">
-                        <li class="nav-item active" data-nav-item="home"><a id="home" data-hover="Home" href="#!"
+                        <li class="nav-item active" data-nav-item="home"><a data-hover="Home" href="#!"
                                 class="nav-link">Home</a></li>
-                        <li class="nav-item" data-nav-item="about"><a id="about" data-hover="About" href="#!"
+                        <li class="nav-item" data-nav-item="about"><a data-hover="About" href="#!"
                                 class="nav-link">About</a>
                         </li>
+                        <li class="nav-item" data-nav-item="projects"><a data-hover="Projects" class="nav-link" href="#!" >Projects</a></li>
                         <li><a href="docs/Gregg_Stubberfield_Resume.pdf" data-hover="Resume"
                                 target="_blank">Resume</a></li>
-                        <li><a href="https://weather-app-sbcg.onrender.com/" data-hover="Projects" target="_blank">Projects</a></li>
                         <li><a href="mailto:stubberg3@gmail.com?subject=I have an opportunity for you&body=Hi Gregg,%0A%0AI was looking at your website and..."
-                                data-hover="Contact" title="email">Contact</a></li>
+                                data-hover="Email" title="email">Email</a></li>
                     </ul>
                 </div>
                 <div class="content">
                     <div id="home" data-page="home" class="page current-page">
-                        <h2><b>Hey, I'm <span class="primary-color-text">Gregg</span>.</b></h2>
-                        <p>I'm a Web Developer working remotely in Yardley, PA with over 5
-                            years of experience building and maintaining websites. My passion is in creating solutions
-                            with Javascript and learning all things web development.
+                        <h3 style="margin-top: 0;"><b>Hey, I'm <span class="primary-color-text">Gregg</span>.</b></h3>
+                        <p>I'm a Web Developer working remotely in Yardley, PA with over 6
+                            years of experience building and maintaining websites. My passion is in creating solutions and
+                            learning all things web development.
                         </p>
                     </div>
                     <div id="about" data-page="about" class="page">
-                        <h2 class="page-name"><b>About Me</b></h2>
+                        <h3 class="page-name" style="margin-top: 0;"><b>About Me</b></h3>
                         <p>Hello! In my free time, I enjoy running 5Ks,
                             breakfast dining,
                             and doting on my dog Bacon. I leisurely play games such as
@@ -295,7 +289,55 @@
                         </p>
                     </div>
                     <div id="projects" data-page="projects" class="page">
-                        <p>TBD</p>
+                        <h3 class="page-name" style="margin-top: 0;"><b>Projects</b></h3>
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="card">
+                                    <a href="https://weather-app-sbcg.onrender.com/" target="blank">
+                                        <div class="card-image">
+                                            <img src="images/weather-app-preview.png" alt="Preview of Weather App">
+                                        </div>
+                                    </a>
+                                    <div class="card-content">
+                                        <h5 class="primary-color-text"><b>Weather Dashboard</b></h6>
+                                        <p>Current weather and forecast data using the <a href="https://openweathermap.org/" target="_blank">OpenWeatherMap</a> and <a href="https://zipcodestack.com/" target="_blank">Zipcodestack</a> APIs.</p>
+                                        <p style="margin-top: 1rem;">System Overview:</p>
+                                        <ul class="browser-default">
+                                            <li>Front-end: <em>Jquery</em> and <em>MaterializeCSS</em> for responsive design.</li>
+                                            <li>Back-end: <em>Node.js</em> for handling API calls and data management.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a class="btn btn-block primary-color" href="https://weather-app-sbcg.onrender.com/" target="blank">View Demo</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12">
+                                <div class="card">
+                                    <a href="https://codeforphilly.org/projects/balancer" target="_blank">
+                                        <div class="card-image">
+                                            <img src="images/balancer_social_graphic.jpg" alt="Preview of Balancer Social Graphic">
+                                        </div>
+                                    </a>
+                                    <div class="card-content">
+                                        <h6 class="primary-color-text">Balancer: AI-powered Bipolar Medication Decision Support App</h6>
+                                        <p>Balancer seeks to solve the problems created by the trial-and-error decision-making process that psychiatrists/medication prescribers and patients go through when choosing medications for bipolar disorder.
+                                        </p>
+                                        <p style="margin-top: 1rem;">System Overview:</p>
+                                        <ul class="browser-default">
+                                            <li>Front-end: <em>React.js</em> and <em>Tailwind CSS</em> for interactive and responsive UI/UX.<li>
+                                            <li>Back-end: <em>Django</em> for robust data management and API services.</li>
+                                            <li>Database: <em>PostgreSQL</em> for storing paper details, user data, and admin approvals.</li>
+                                            <li>AI Service: <em>OpenAI</em> for analyzing and verifying the relevance of the papers to mental health.</li>
+                                            <li>File Storage: <em>AWS S3</em> for storing uploaded PhD papers</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a class="btn btn-block primary-color" href="https://codeforphilly.org/projects/balancer" target="blank">View More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="curve"></div>
