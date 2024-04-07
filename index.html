@@ -1,357 +1,453 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
+  <head>
+    <title>Gregg Stubberfield • Frontend Developer</title>
+    <meta
+      name="description"
+      content="Gregg Stubberfield is a Frontend Developer who creates solutions for the web."
+    />
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="images/favicon/favicon-192x192.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="images/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="images/favicon/favicon-16x16.png"
+    />
 
-<head>
-    <title>Gregg Stubberfield • Web Developer</title>
-    <meta name="description" content="Web Developer portfolio for Gregg Stubberfield">
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
-    <meta content='Web Developer working remotely in Yardley, Pennsylvania.' name='description'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon/favicon-192x192.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Icons&Roboto:wght@300;400;500;700&display=swap"
-        rel="stylesheet">
-    <link href='css/materialize.css' rel='stylesheet'>
-    <link href='css/index.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 
+    <link href="css/materialize.css" rel="stylesheet" />
     <style>
-        html,
-        body,
-        main {
-            height: 100%;
+      :root {
+        --heading-font-family: 'Alkatra', sans-serif;
+        --body-font-family: 'Lato', serif;
+        --body-color: #b6b1bf;
+        --heading-color: #eeebf3;
+        --primary-color: #4e406a; /* English Violet */
+        --primary-color-light: #9c96a8;
+        --primary-color-dark: #181223;
+        --accent-color: #04a777; /* Jade */
+        --default-text-color: #fff;
+        --background-color: #fff;
+        --emphasis-text-color: #b3b3b3;
+        --subtle-text-color: #767676;
+        --link-underline-color: #acacac;
+        --link-hover-color: #816cab;
+        --small-screen: 640px;
+        --large-screen: 1024px;
+        --tw-backdrop-blur: blur(8px);
+      }
+
+      html {
+        font-family: var(--body-font-family);
+        scroll-behavior: smooth;
+        color: var(--body-color);
+      }
+
+      h1 {
+        font-size: 3rem;
+        font-family: var(--heading-font-family);
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin: 1rem 0;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+        margin: 2rem 0;
+      }
+
+      h1,
+      h2,
+      h3,
+      a {
+        color: var(--heading-color);
+      }
+
+      a {
+        transition: color 0.2s;
+      }
+
+      a:hover {
+        color: var(--accent-color);
+      }
+
+      .list > .list-item {
+        margin-top: 0;
+      }
+
+      .no-margin {
+        margin: 0 !important;
+      }
+
+      .main-section {
+        padding: 2rem 0;
+      }
+
+      .main-section:first-of-type {
+        padding-top: 0;
+      }
+
+      .main-section:last-of-type {
+        padding-bottom: 0;
+      }
+
+      .socials i {
+        font-size: 1.5rem;
+      }
+
+      .timeline {
+        text-transform: uppercase;
+        font-size: .9rem;
+      }
+
+      .section-title {
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--primary-color);
+        font-weight: bolder;
+      }
+
+      .headline-title {
+        color: var(--primary-color);
+        font-weight: 300;
+        margin-top: .3rem;
+      }
+
+      h3.headline-title {
+        margin-bottom: 0;
+      }
+
+      .list-item {
+        margin: 3rem 0;
+      }
+
+      .flex-header-main {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 8rem;
+        background-color: var(--primary-color-dark);
+      }
+
+      .headline,
+      .main-content {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 50%;
+      }
+
+      .headline {
+        justify-content: space-between;
+      }
+
+      .fa-arrow-pointer {
+        transition: transform .5s;
+        margin-left: 10px;
+      }
+
+      a:hover i.fa-arrow-pointer {
+        transform: translateX(-5px);
+      }
+
+      .thumbnail {
+        max-width: 100%;
+        height: auto;
+        border-radius: .25rem;
+        border: 3px solid var(--primary-color-light);
+        transition: border-color .3s;
+      }
+
+      .thumbnail:hover {
+        border-color: var(--accent-color);
+      }
+
+      .chip {
+        color: #fff;
+        background-color: var(--primary-color);
+      }
+
+      #about p {
+        line-height: 1.75;
+      }
+
+      .socials li {
+        display: inline-block;
+        margin-right: 1rem;
+      }
+
+      @media screen and (max-width: 601px) {
+        html {
+          font-size: 14px;
         }
 
-        .flex-row {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            height: 100%;
+        .sticky-title {
+          position: sticky;
+          width: 100vw;
+          background-color: rgba(24, 18, 35, .75);
+          top: 0;
+          backdrop-filter: blur(3px);
+          padding: .1rem;
+          z-index: 20;
+        }
+      }
+
+      @media screen and (max-width: 993px) {
+        .flex-header-main {
+          padding: 6rem 3rem;
+          flex-direction: column;
         }
 
-        .flex-column {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        .main-content {
+          padding-top: 6rem;
+        }
+      }
+
+      @media screen and (min-width: 994px) {
+        html {
+          font-size: 16px;
         }
 
-        .flex-column.left-column {
-            flex: 1 1 33%;
+        .headline {
+          position: -webkit-sticky;
+          position: sticky;
+          top: 0;
+          height: 100vh;
+          align-items: stretch;
         }
 
-        .flex-column.right-column {
-            flex: 1 1 67%;
+        .headline,
+        .main-content {
+          padding: 6rem 0;
         }
-
-        .content {
-            padding: 2rem;
-            max-width: 600px;
-            margin: 0 auto
-        }
-
-        ul.social li {
-            display: inline-block;
-        }
-
-        ul.social {
-            color: var(--primary-color);
-        }
-
-        ul.social li a:hover {
-            color: var(--link-hover-color);
-        }
-
-        .title {
-            color: var(--emphasis-text-color);
-        }
-
-        .left-column {
-            background: rgba(21, 13, 37, 0.9);
-            background-image: url('../images/purple-sky.jpg');
-            background: linear-gradient(180deg,
-                    rgba(21, 13, 37, .5),
-                    rgba(21, 13, 37, .95),
-                    rgba(21, 13, 37, 1)),
-                url('../images/purple-sky.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        .curve {
-            height: 350px;
-            background: url(/images/curve-desktop.svg) no-repeat;
-            background-size: cover;
-            position: fixed;
-            bottom: 0;
-            right: 0;
-            width: 50%;
-            z-index: -1;
-        }
-
-        @media screen and (max-width: 601px) {
-            .flex-column {
-                flex: 1 1 100%;
-            }
-        }
-
-        @media screen and (max-width: 770px) {
-            .curve {
-                width: 100%;
-                opacity: .33;
-                background: url(/images/curve-mobile.svg) no-repeat;
-            }
-        }
-
-        .page:not(.current-page) {
-            display: none;
-        }
-
-        .current-page {
-            display: block;
-        }
-
-        .page-name {
-            color: var(--primary-color);
-        }
-
-        .top-nav {
-            display: flex;
-            justify-content: flex-end;
-            align-content: center;
-            margin: 1rem;
-            z-index: 1;
-        }
-
-        @media screen and (max-width: 601px) {
-            .top-nav {
-                display: block;
-            }
-        }
-
-        .top-nav * {
-            box-sizing: border-box;
-            -webkit-transition: all 0.35s ease;
-            transition: all 0.35s ease;
-        }
-
-        .top-nav li {
-            display: inline-block;
-            list-style: outside none none;
-            margin: 0 1em;
-            overflow: hidden;
-        }
-
-        .top-nav a {
-            padding: 0.3em 0;
-            color: #525252;
-            position: relative;
-            display: inline-block;
-            letter-spacing: 1px;
-            margin: 0;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .top-nav a:before,
-        .top-nav a:after {
-            position: absolute;
-            -webkit-transition: all 0.35s ease;
-            transition: all 0.35s ease;
-        }
-
-        .top-nav a:before {
-            top: 100%;
-            display: block;
-            height: 3px;
-            width: 100%;
-            content: "";
-            background-color: var(--primary-color);
-            border-radius: 25px;
-        }
-
-        .top-nav a:after {
-            padding: 0.3em 0;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            content: attr(data-hover);
-            color: #000;
-            white-space: nowrap;
-        }
-
-        .top-nav li:hover a,
-        .top-nav li.active a {
-            transform: translateY(-100%);
-        }
-
-        /* @media screen and (min-width: 771px) {
-            .nav {
-                position: absolute;
-                top: 0;
-                right: 0;
-            }
-        } */
-
-        .btn.dropdown-trigger {
-            border-radius: 25px;
-            width: 50px;
-            height: 50px;
-            text-align: left;
-            margin: 10px;
-        }
-
-        .dropdown-content li a {
-            color: var(--primary-color);
-        }
-
-        .btn.dropdown-trigger:hover,
-        .btn.dropdown-trigger:focus {
-            background: var(--link-hover-color);
-        }
-
-        .btn.dropdown-trigger i {
-            vertical-align: -webkit-baseline-middle;
-        }
+      }
     </style>
-</head>
-
-<body>
-    <main>
-        <div class="flex-row">
-            <div class="flex-column left-column center">
-                <div class="content">
-                    <div class="avatar-and-name-container">
-                        <img class="avatar" src="images/avatar.png" alt="Avatar of Gregg Stubberfield">
-                        <div class="name-container white-text">
-                            <h3 class="name no-margin">Gregg Stubberfield</h3>
-                            <h5 class="title">Web Developer</h5>
-                        </div>
-                    </div>
-                    <ul class="social">
-                        <li>
-                            <a href="https://www.linkedin.com/in/stubberg3/" target="_blank" rel="noopener noreferrer"
-                                class="social-btn">
-                                <i class="fa fa-2x fa-fw fa-linkedin"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/stubberg3" target="_blank" rel="noopener noreferrer"
-                                class="social-btn">
-                                <i class="fa fa-2x fa-fw fa-github"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="mailto:stubberg3@gmail.com?subject=I have an opportunity for you&body=Hi Gregg,%0A%0AI was looking at your website and..."
-                                title="email" target="_blank" class="social-btn"> <i
-                                    class="fa fa-2x fa-fw fa-envelope"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="flex-column right-column">
-                <div class="nav">
-                    <ul class="top-nav">
-                        <li class="nav-item active" data-nav-item="home"><a data-hover="Home" href="#!"
-                                class="nav-link">Home</a></li>
-                        <li class="nav-item" data-nav-item="about"><a data-hover="About" href="#!"
-                                class="nav-link">About</a>
-                        </li>
-                        <li class="nav-item" data-nav-item="projects"><a data-hover="Projects" class="nav-link" href="#!" >Projects</a></li>
-                        <li><a href="docs/Gregg_Stubberfield_Resume.pdf" data-hover="Resume"
-                                target="_blank">Resume</a></li>
-                        <li><a href="mailto:stubberg3@gmail.com?subject=I have an opportunity for you&body=Hi Gregg,%0A%0AI was looking at your website and..."
-                                data-hover="Email" title="email">Email</a></li>
-                    </ul>
-                </div>
-                <div class="content">
-                    <div id="home" data-page="home" class="page current-page">
-                        <h3 style="margin-top: 0;"><b>Hey, I'm <span class="primary-color-text">Gregg</span>.</b></h3>
-                        <p>I'm a Web Developer working remotely in Yardley, PA with over 6
-                            years of experience building and maintaining websites. My passion is in creating solutions and
-                            learning all things web development.
-                        </p>
-                    </div>
-                    <div id="about" data-page="about" class="page">
-                        <h3 class="page-name" style="margin-top: 0;"><b>About Me</b></h3>
-                        <p>Hello! In my free time, I enjoy running 5Ks,
-                            breakfast dining,
-                            and doting on my dog Bacon. I leisurely play games such as
-                            <a href=" https://boardgamegeek.com/boardgame/174430/gloomhaven"
-                                rel="nofollow referrer noopener">Gloomhaven</a>
-                            and
-                            <a href="https://www.chess.com/" rel="nofollow referrer noopener">Chess</a>,
-                            and have competively played
-                            <a href="https://boardgamegeek.com/boardgame/147020/star-realms"
-                                rel="nofollow referrer noopener">Star Realms</a> and
-                            <a href="https://www.smashbros.com/en_US/index.html" rel="nofollow referrer noopener">Super
-                                Smash Brothers</a>.
-                        </p>
-                    </div>
-                    <div id="projects" data-page="projects" class="page">
-                        <h3 class="page-name" style="margin-top: 0;"><b>Projects</b></h3>
-                        <div class="row">
-                            <div class="col s12">
-                                <div class="card">
-                                    <a href="https://weather-app-sbcg.onrender.com/" target="blank">
-                                        <div class="card-image">
-                                            <img src="images/weather-app-preview.png" alt="Preview of Weather App">
-                                        </div>
-                                    </a>
-                                    <div class="card-content">
-                                        <h5 class="primary-color-text"><b>Weather Dashboard</b></h6>
-                                        <p>Current weather and forecast data using the <a href="https://openweathermap.org/" target="_blank">OpenWeatherMap</a> and <a href="https://zipcodestack.com/" target="_blank">Zipcodestack</a> APIs.</p>
-                                        <p style="margin-top: 1rem;">System Overview:</p>
-                                        <ul class="browser-default">
-                                            <li>Front-end: <em>Jquery</em> and <em>MaterializeCSS</em> for responsive design.</li>
-                                            <li>Back-end: <em>Node.js</em> for handling API calls and data management.</li>
-                                        </ul>
-                                    </div>
-                                    <div class="card-footer">
-                                        <a class="btn btn-block primary-color" href="https://weather-app-sbcg.onrender.com/" target="blank">View Demo</a>
-                                        <a class="btn btn-block green" href="https://github.com/StubberG3/weather-app" target="blank">Github</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col s12">
-                                <div class="card">
-                                    <a href="https://codeforphilly.org/projects/balancer" target="_blank">
-                                        <div class="card-image">
-                                            <img src="images/balancer_social_graphic.jpg" alt="Preview of Balancer Social Graphic">
-                                        </div>
-                                    </a>
-                                    <div class="card-content">
-                                        <h6 class="primary-color-text">Balancer: AI-powered Bipolar Medication Decision Support App</h6>
-                                        <p>Balancer seeks to solve the problems created by the trial-and-error decision-making process that psychiatrists/medication prescribers and patients go through when choosing medications for bipolar disorder.
-                                        </p>
-                                        <p style="margin-top: 1rem;">System Overview:</p>
-                                        <ul class="browser-default">
-                                            <li>Front-end: <em>React.js</em> and <em>Tailwind CSS</em> for interactive and responsive UI/UX.</li>
-                                            <li>Back-end: <em>Django</em> for robust data management and API services.</li>
-                                            <li>Database: <em>PostgreSQL</em> for storing paper details, user data, and admin approvals.</li>
-                                            <li>AI Service: <em>OpenAI</em> for analyzing and verifying the relevance of the papers to mental health.</li>
-                                            <li>File Storage: <em>AWS S3</em> for storing uploaded PhD papers</li>
-                                        </ul>
-                                    </div>
-                                    <div class="card-footer">
-                                        <a class="btn btn-block primary-color" href="https://codeforphilly.org/projects/balancer" target="blank">View More</a>
-                                        <a class="btn btn-block green" href="https://github.com/CodeForPhilly/balancer-main" target="blank">Github</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="curve"></div>
-            </div>
+  </head>
+  <body class="flex-header-main">
+    <header class="headline">
+      <div>
+        <h1 id="its-a-me" class="no-margin">Gregg Stubberfield</h1>
+        <h2 class="headline-title">Frontend Developer</h2>
+        <p class="no-margin">I create solutions for the web.</p>
+        <ul class="hide-on-small-only">
+          <li>
+            <a href="#about"><span class="nav-indicator">About</span></a>
+          </li>
+          <li>
+            <a href="#experience"
+              ><span class="nav-indicator">Experience</span></a
+            >
+          </li>
+          <li>
+            <a href="#projects"><span class="nav-indicator">Projects</span></a>
+          </li>
+        </ul>
+      </div>
+      <ul class="socials">
+        <li>
+          <a href="https://github.com/stubberg3"><i class="fa fa-github"></i></a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/stubberg3/" target="_blank">
+            <i class="fa fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="mailto:stubberg3@gmail.com?subject=I have an opportunity for you&body=Hi Gregg,%0A%0AI was looking at your website and...">
+            <i class="fa fa-envelope"></i>
+          </a>
+        </li>
+      </ul>
+    </header>
+    <main class="main-content">
+      <section id="about" class="main-section">
+        <div class="sticky-title hide-on-med-and-up">
+          <h3 class="section-title">About</h3>
         </div>
+        <p class="no-margin">
+          Hello! In my free time, I enjoy running 5Ks, breakfast dining, and
+          doting on my dog Bacon. I leisurely play games such as
+          <a
+            href=" https://boardgamegeek.com/boardgame/174430/gloomhaven"
+            rel="nofollow referrer noopener"
+            >Gloomhaven</a
+          >
+          and
+          <a href="https://www.chess.com/" rel="nofollow referrer noopener"
+            >Chess</a
+          >, and have competively played
+          <a
+            href="https://boardgamegeek.com/boardgame/147020/star-realms"
+            rel="nofollow referrer noopener"
+            >Star Realms</a
+          >
+          and
+          <a
+            href="https://www.smashbros.com/en_US/index.html"
+            rel="nofollow referrer noopener"
+            >Super Smash Brothers</a
+          >.
+        </p>
+      </section>
+      <section id="experience" class="main-section">
+        <h3 class="section-title hide-on-small-only">Experience</h3>
+        <div class="sticky-title hide-on-med-and-up">
+          <h3 class="section-title">Experience</h3>
+        </div>
+        <ul class="list">
+          <li class="list-item">
+            <div class="row">
+              <div class="col s3 no-padding">
+                <p class="no-margin timeline">2017 — Present</p>
+              </div>
+              <div class="col s9">
+                <h3 class="no-margin">
+                  <a href="https://www.bridgewaybentech.com/" target="_blank">
+                    <span
+                      >Bridgeway Benefit
+                      Technologies</span
+                    >
+                    <i class="fa fa-arrow-pointer"></i>
+                  </a>
+                </h3>
+                <h3 class="headline-title">Frontend Developer</h3>
+                <p>
+                  Develop and maintain responsive static websites and secure
+                  login portals. Collaborate with client and across departments
+                  during lifecycle and support of implementations.
+                </p>
+                <div class="chip">HTML</div>
+                <div class="chip">CSS</div>
+                <div class="chip">SCSS</div>
+                <div class="chip">Javascript</div>
+                <div class="chip">jQuery</div>
+                <div class="chip">Node.js</div>
+                <div class="chip">Azure DevOps</div>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <h3>
+          <a href="https://stubberg3.github.io/docs/Gregg_Stubberfield_Resume.pdf" target="_blank">
+            <span>View Full Resume</span>
+            <i class="fa fa-arrow-pointer"></i>
+          </a>
+        </h3>
+      </section>
+      <section id="projects" class="main-section">
+        <h3 class="section-title hide-on-small-only">Projects</h3>
+        <div class="sticky-title hide-on-med-and-up">
+          <h3 class="section-title">Projects</h3>
+        </div>
+        <ul class="list">
+          <li class="list-item">
+            <div class="row">
+              <div class="col s3 no-padding">
+                <a href="https://codeforphilly.org/projects/balancer">
+                  <img class="thumbnail" src="images/balancer_social_graphic.jpg" alt="Preview of Balancer Social Graphic">
+                </a>
+              </div>
+              <div class="col s9">
+                  <h3 class="no-margin">
+                    <a href="https://codeforphilly.org/projects/balancer"
+                    target="_blank"><span>Balancer · AI-powered Bipolar Medication Decision Support App</span>
+                    <i class="fa fa-arrow-pointer"></i>
+                  </a>
+                  </h3>
+                  <h3 class="headline-title">Volunteer</h3>
+                </a>
+                <p>
+                  Balancer seeks to solve the problems created by the
+                  trial-and-error decision-making process that
+                  psychiatrists/medication prescribers and patients go through
+                  when choosing medications for bipolar disorder.
+                </p>
+                <div class="chip">React</div>
+                <div class="chip">Tailwind</div>
+                <div class="chip">Django</div>
+                <div class="chip">PostgreSQL</div>
+                <div class="chip">OpenAI</div>
+                <div class="chip">AWS S3</div>
+              </div>
+            </div>
+          </li>
+          <li class="list-item">
+            <div class="row">
+              <div class="col s3 no-padding">
+                <a href="https://weather-app-sbcg.onrender.com/">
+                  <img
+                    class="thumbnail"
+                    src="images/weather-app-preview.png"
+                    alt="Preview of Weather App"
+                  />
+                </a>
+              </div>
+              <div class="col s9">
+                <h3 class="no-margin">
+                  <a
+                    href="https://weather-app-sbcg.onrender.com/"
+                    target="_blank"
+                  >
+                    <span>Weather Dashboard</span>
+                    <i class="fa fa-arrow-pointer"></i>
+                  </a>
+                </h3>
+                <h3 class="headline-title">Personal Project</h3>
+                <p>
+                  Current weather and forecast data using the
+                  <a href="https://openweathermap.org/" target="_blank"
+                    >OpenWeatherMap</a
+                  >
+                  and
+                  <a href="https://zipcodestack.com/" target="_blank"
+                    >Zipcodestack</a
+                  >
+                  APIs.
+                </p>
+                <div class="chip">HTML</div>
+                <div class="chip">CSS</div>
+                <div class="chip">SCSS</div>
+                <div class="chip">JavaScript</div>
+                <div class="chip">jQuery</div>
+                <div class="chip">Node.js</div>
+                <div class="chip">Render</div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <footer>Coded in <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a>. Built with <a href="https://materializecss.com/" target="_blank">Materialize CSS</a> and deployed using <a href="https://pages.github.com/" target="_blank">Github Pages</a>.</footer>
     </main>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
-        </script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://kit.fontawesome.com/1b2c37e814.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-</body>
-
+    <script
+      src="https://kit.fontawesome.com/1b2c37e814.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
