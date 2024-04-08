@@ -44,7 +44,7 @@
         --body-color: #b6b1bf;
         --heading-color: #eeebf3;
         --primary-color: #4e406a; /* English Violet */
-        --primary-color-light: #9c96a8;
+        --primary-color-light: #9881c7;
         --primary-color-dark: #181223;
         --accent-color: #04a777; /* Jade */
         --default-text-color: #fff;
@@ -126,12 +126,12 @@
       .section-title {
         letter-spacing: 5px;
         text-transform: uppercase;
-        color: var(--primary-color);
+        color: var(--primary-color-light);
         font-weight: bolder;
       }
 
       .headline-title {
-        color: var(--primary-color);
+        color: var(--primary-color-light);
         font-weight: 300;
         margin-top: .3rem;
       }
@@ -147,7 +147,6 @@
       .flex-header-main {
         display: flex;
         justify-content: space-between;
-        padding: 0 8rem;
         background-color: var(--primary-color-dark);
       }
 
@@ -176,11 +175,12 @@
         height: auto;
         border-radius: .25rem;
         border: 3px solid var(--primary-color-light);
-        transition: border-color .3s;
+        transition: all .3s;
       }
 
       .thumbnail:hover {
         border-color: var(--accent-color);
+        opacity: .8;
       }
 
       .chip {
@@ -201,6 +201,20 @@
         html {
           font-size: 14px;
         }
+      }
+
+      @media screen and (max-width: 993px) {
+        .flex-header-main {
+          flex-direction: column;
+        }
+
+        .headline {
+          padding: 6rem 3rem 0;
+        }
+
+        .main-content {
+          padding: 0 3rem 6rem;
+        }
 
         .sticky-title {
           position: sticky;
@@ -210,17 +224,6 @@
           backdrop-filter: blur(3px);
           padding: .1rem;
           z-index: 20;
-        }
-      }
-
-      @media screen and (max-width: 993px) {
-        .flex-header-main {
-          padding: 6rem 3rem;
-          flex-direction: column;
-        }
-
-        .main-content {
-          padding-top: 6rem;
         }
       }
 
@@ -241,6 +244,134 @@
         .main-content {
           padding: 6rem 0;
         }
+
+        .headline {
+          padding-left: 6rem;
+        }
+
+        .main-content {
+          padding-right: 6rem;
+        }
+      }
+
+      /* Potion Animation */
+
+      .potion {
+          width: 100%;
+          height:100vh;
+      }
+
+      .bubbles{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+      }
+
+      .bubbles li {
+          position: absolute;
+          display: block;
+          list-style: none;
+          width: 20px;
+          height: 20px;
+          background: rgba(255, 255, 255, 0.2);
+          animation: animate 25s linear infinite;
+          bottom: -150px;
+
+      }
+
+      .bubbles li:nth-child(1){
+          left: 25%;
+          width: 80px;
+          height: 80px;
+          animation-delay: 0s;
+      }
+
+
+      .bubbles li:nth-child(2){
+          left: 10%;
+          width: 20px;
+          height: 20px;
+          animation-delay: 2s;
+          animation-duration: 12s;
+      }
+
+      .bubbles li:nth-child(3){
+          left: 70%;
+          width: 20px;
+          height: 20px;
+          animation-delay: 4s;
+      }
+
+      .bubbles li:nth-child(4){
+          left: 40%;
+          width: 60px;
+          height: 60px;
+          animation-delay: 0s;
+          animation-duration: 18s;
+      }
+
+      .bubbles li:nth-child(5){
+          left: 65%;
+          width: 20px;
+          height: 20px;
+          animation-delay: 0s;
+      }
+
+      .bubbles li:nth-child(6){
+          left: 75%;
+          width: 110px;
+          height: 110px;
+          animation-delay: 3s;
+      }
+
+      .bubbles li:nth-child(7){
+          left: 35%;
+          width: 150px;
+          height: 150px;
+          animation-delay: 7s;
+      }
+
+      .bubbles li:nth-child(8){
+          left: 50%;
+          width: 25px;
+          height: 25px;
+          animation-delay: 15s;
+          animation-duration: 45s;
+      }
+
+      .bubbles li:nth-child(9){
+          left: 20%;
+          width: 15px;
+          height: 15px;
+          animation-delay: 2s;
+          animation-duration: 35s;
+      }
+
+      .bubbles li:nth-child(10){
+          left: 85%;
+          width: 150px;
+          height: 150px;
+          animation-delay: 0s;
+          animation-duration: 11s;
+      }
+
+      @keyframes animate {
+
+          0%{
+              transform: translateY(0) rotate(0deg);
+              opacity: 1;
+              border-radius: 0;
+          }
+
+          100%{
+              transform: translateY(-1000px) rotate(720deg);
+              opacity: 0;
+              border-radius: 50%;
+          }
+
       }
     </style>
   </head>
@@ -279,10 +410,24 @@
           </a>
         </li>
       </ul>
+      <div class="potion" >
+        <ul class="bubbles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+    </div >
     </header>
     <main class="main-content">
       <section id="about" class="main-section">
-        <div class="sticky-title hide-on-med-and-up">
+        <div class="sticky-title hide-on-large-only">
           <h3 class="section-title">About</h3>
         </div>
         <p class="no-margin">
@@ -311,8 +456,8 @@
         </p>
       </section>
       <section id="experience" class="main-section">
-        <h3 class="section-title hide-on-small-only">Experience</h3>
-        <div class="sticky-title hide-on-med-and-up">
+        <h3 class="section-title hide-on-med-and-down">Experience</h3>
+        <div class="sticky-title hide-on-large-only">
           <h3 class="section-title">Experience</h3>
         </div>
         <ul class="list">
@@ -356,8 +501,8 @@
         </h3>
       </section>
       <section id="projects" class="main-section">
-        <h3 class="section-title hide-on-small-only">Projects</h3>
-        <div class="sticky-title hide-on-med-and-up">
+        <h3 class="section-title hide-on-med-and-down">Projects</h3>
+        <div class="sticky-title hide-on-large-only">
           <h3 class="section-title">Projects</h3>
         </div>
         <ul class="list">
