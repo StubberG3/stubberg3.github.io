@@ -42,6 +42,7 @@
         --heading-font-family: 'Alkatra', sans-serif;
         --body-font-family: 'Lato', serif;
         --body-color: #b6b1bf;
+        --body-color-dark: #99989b;
         --heading-color: #eeebf3;
         --primary-color: #4e406a; /* English Violet */
         --primary-color-light: #9881c7;
@@ -54,7 +55,7 @@
         --emphasis-text-color: #b3b3b3;
         --subtle-text-color: #767676;
         --link-underline-color: #acacac;
-        --link-hover-color: #816cab;
+        --link-hover-color: #04a777;
         --small-screen: 640px;
         --large-screen: 1024px;
         --tw-backdrop-blur: blur(8px);
@@ -144,10 +145,23 @@
         font-weight: bolder;
       }
 
-      .nav-link {
-        color: var(--primary-color);
+      a.nav-link {
         text-transform: uppercase;
-        font-weight: bolder;
+        color: var(--body-color-dark);
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      a.nav-link.active {
+        color: #fff;
+      }
+
+      a.nav-link:hover {
+        color: var(--link-hover-color);
+      }
+
+      .no-br {
+        white-space: nowrap;
       }
 
       .headline-title {
@@ -433,11 +447,6 @@
             border-radius: 50%;
         }
       }
-
-      .nav-link.active {
-        color: var(--primary-color-light);
-        font-weight: bold;
-      }
     </style>
   </head>
   <body class="flex-header-main">
@@ -481,16 +490,16 @@
         </li>
       </ul>
       <ul class="bubbles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li data-bubble="1"></li>
+        <li data-bubble="2"></li>
+        <li data-bubble="3"></li>
+        <li data-bubble="4"></li>
+        <li data-bubble="5"></li>
+        <li data-bubble="6"></li>
+        <li data-bubble="7"></li>
+        <li data-bubble="8"></li>
+        <li data-bubble="9"></li>
+        <li data-bubble="10"></li>
       </ul>
     </header>
     <main class="main-content">
@@ -545,10 +554,11 @@
                 <h3 class="no-margin">
                   <a href="https://www.bridgewaybentech.com/" target="_blank">
                     <span
-                      >Bridgeway Benefit
-                      Technologies</span
+                      >Bridgeway Benefit</span
                     >
-                    <i class="fa fa-flask"></i>
+                    <span class="no-br">
+                      Technologies <i class="fa fa-flask"></i>
+                    </span>
                   </a>
                 </h3>
                 <h3 class="headline-title">Web Developer</h3>
@@ -589,8 +599,11 @@
               <div class="col s10">
                   <h3 class="no-margin">
                     <a href="https://uwf.edu/hmcse/departments/mathematics-and-statistics/"
-                    target="_blank"><span>University of West Florida</span>
-                    <i class="fa fa-flask"></i>
+                    target="_blank">University of West
+                    <span class="no-br">
+                      Florida
+                      <i class="fa fa-flask"></i>
+                    </span>
                   </a>
                   </h3>
                   <h3 class="headline-title">Mathematics and Statistics Tutor</h3>
@@ -618,8 +631,11 @@
               <div class="col s10">
                   <h3 class="no-margin">
                     <a href="https://www.nwfsc.edu/"
-                    target="_blank"><span>Northwest Florida State College</span>
-                    <i class="fa fa-flask"></i>
+                    target="_blank"><span>Northwest Florida State</span>
+                    <span class="no-br">
+                      College
+                      <i class="fa fa-flask"></i>
+                    </span>
                   </a>
                   </h3>
                   <h3 class="headline-title">Mathematics and Statistics Tutor</h3>
@@ -635,8 +651,11 @@
         </ul>
         <h3>
           <a href="https://stubberg3.github.io/docs/Gregg_Stubberfield_Resume.pdf" target="_blank">
-            <span>View Full Resume</span>
-            <i class="fa fa-flask"></i>
+            <span>View Full</span>
+            <span class="no-br">
+              Resume
+              <i class="fa fa-flask"></i>
+            </span>
           </a>
         </h3>
       </section>
@@ -660,8 +679,11 @@
               <div class="col s10">
                   <h3 class="no-margin">
                     <a href="https://uwf.edu/"
-                    target="_blank"><span>University of West Florida</span>
-                    <i class="fa fa-flask"></i>
+                    target="_blank"><span>University of West</span>
+                    <span class="no-br">
+                      Florida
+                      <i class="fa fa-flask"></i>
+                    </span>
                   </a>
                   </h3>
                   <h3 class="headline-title">B.S., Mathematical Sciences</h3>
@@ -688,8 +710,11 @@
               <div class="col s10">
                   <h3 class="no-margin">
                     <a href="https://www.nwfsc.edu/"
-                    target="_blank"><span>Northwest Florida State College</span>
-                    <i class="fa fa-flask"></i>
+                    target="_blank"><span>Northwest Florida State</span>
+                    <span class="no-br">
+                      College
+                      <i class="fa fa-flask"></i>
+                    </span>
                   </a>
                   </h3>
                   <h3 class="headline-title">AA, Pre-Engineering</h3>
@@ -720,8 +745,8 @@
               <div class="col s10">
                   <h3 class="no-margin">
                     <a href="https://codeforphilly.org/projects/balancer"
-                    target="_blank"><span>Balancer · AI-powered Bipolar Medication Decision Support App</span>
-                    <i class="fa fa-flask"></i>
+                    target="_blank"><span>Balancer · AI-powered Bipolar Medication Decision Support</span>
+                    <span class="no-br">App <i class="fa fa-flask"></i></span>
                   </a>
                   </h3>
                   <h3 class="headline-title">Volunteer</h3>
@@ -759,8 +784,10 @@
                     href="https://weather-app-sbcg.onrender.com/"
                     target="_blank"
                   >
-                    <span>Weather Dashboard</span>
-                    <i class="fa fa-flask"></i>
+                    <span>Weather</span>
+                    <span class="no-br">
+                      Dashboard <i class="fa fa-flask"></i>
+                    </span>
                   </a>
                 </h3>
                 <h3 class="headline-title">Personal Project</h3>
