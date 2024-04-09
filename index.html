@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Gregg Stubberfield • Frontend Developer</title>
+    <title>Gregg Stubberfield • Web Developer</title>
     <meta
       name="description"
-      content="Gregg Stubberfield is a Frontend Developer who creates solutions for the web."
+      content="Gregg Stubberfield is a Web Developer who builds and maintains websites."
     />
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -46,6 +46,7 @@
         --primary-color: #4e406a; /* English Violet */
         --primary-color-light: #9881c7;
         --primary-color-dark: #181223;
+        --secondary-color-dark: #001000;
         --accent-color: #04a777; /* Jade */
         --accent-color-light: #c0f0e2;
         --default-text-color: #fff;
@@ -264,6 +265,10 @@
       }
 
       @media screen and (max-width: 993px) {
+        .bubbles {
+          overflow: hidden;
+        }
+
         .flex-header-main {
           flex-direction: column;
         }
@@ -321,7 +326,6 @@
           left: 0;
           width: 100%;
           height: 100%;
-          overflow: hidden;
           z-index: -1;
       }
 
@@ -440,8 +444,8 @@
     <header class="headline">
       <div>
         <h1 id="its-a-me" class="no-margin">Gregg Stubberfield</h1>
-        <h2 class="headline-title">Frontend Developer</h2>
-        <p class="no-margin">I create solutions for the web.</p>
+        <h2 class="headline-title">Web Developer</h2>
+        <p class="no-margin">I concoct solutions for the web.</p>
         <ul class="nav hide-on-med-and-down">
           <li>
             <a class="nav-link" data-nav-link="about" href="#about"><span>About</span></a>
@@ -547,7 +551,7 @@
                     <i class="fa fa-flask"></i>
                   </a>
                 </h3>
-                <h3 class="headline-title">Frontend Developer</h3>
+                <h3 class="headline-title">Web Developer</h3>
                 <p>
                   Develop and maintain responsive static websites and secure
                   login portals. Collaborate with client and across departments
