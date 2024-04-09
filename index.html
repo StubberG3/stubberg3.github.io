@@ -47,6 +47,7 @@
         --primary-color-light: #9881c7;
         --primary-color-dark: #181223;
         --accent-color: #04a777; /* Jade */
+        --accent-color-light: #c0f0e2;
         --default-text-color: #fff;
         --background-color: #fff;
         --emphasis-text-color: #b3b3b3;
@@ -77,6 +78,18 @@
       h3 {
         font-size: 1.25rem;
         margin: 2rem 0;
+      }
+
+      h4 {
+        font-size: 1.15rem;
+        margin: 1rem 0;
+      }
+
+      .subheading {
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--primary-color-light);
       }
 
       h1,
@@ -130,10 +143,16 @@
         font-weight: bolder;
       }
 
+      .nav-link {
+        color: var(--primary-color);
+        text-transform: uppercase;
+        font-weight: bolder;
+      }
+
       .headline-title {
         color: var(--primary-color-light);
         font-weight: 300;
-        margin-top: .3rem;
+        margin-top: .5rem;
       }
 
       h3.headline-title {
@@ -157,18 +176,59 @@
         flex: 1 1 50%;
       }
 
+      .nav li {
+        margin-bottom: 5px;
+      }
+
       .headline {
         justify-content: space-between;
+        position: relative;
       }
 
-      .fa-arrow-pointer {
-        transition: transform .5s;
+      .fa-flask {
         margin-left: 10px;
+        transition: color .5s;
       }
 
-      a:hover i.fa-arrow-pointer {
-        transform: translateX(-5px);
+      a:hover i.fa-flask {
+        color: var(--accent-color);
+        animation: shake 2s cubic-bezier(.36,.07,.19,.97) both;
+        /* animation: shake 0.5s; */
+        animation-iteration-count: infinite;
+        transform: translate3d(0, 0, 0);
       }
+
+      @keyframes shake {
+        10%, 90% {
+          transform: translate3d(-1px, 0, 0);
+        }
+
+        20%, 80% {
+          transform: translate3d(2px, 0, 0);
+        }
+
+        30%, 50%, 70% {
+          transform: translate3d(-4px, 0, 0);
+        }
+
+        40%, 60% {
+          transform: translate3d(4px, 0, 0);
+        }
+      }
+
+      /* @keyframes shake {
+        0% { transform: translate(1px, 1px) rotate(0deg); }
+        10% { transform: translate(-1px, -2px) rotate(-1deg); }
+        20% { transform: translate(-3px, 0px) rotate(1deg); }
+        30% { transform: translate(3px, 2px) rotate(0deg); }
+        40% { transform: translate(1px, -1px) rotate(1deg); }
+        50% { transform: translate(-1px, 2px) rotate(-1deg); }
+        60% { transform: translate(-3px, 1px) rotate(0deg); }
+        70% { transform: translate(3px, 1px) rotate(-1deg); }
+        80% { transform: translate(-1px, -1px) rotate(1deg); }
+        90% { transform: translate(1px, 2px) rotate(0deg); }
+        100% { transform: translate(1px, -2px) rotate(-1deg); }
+      } */
 
       .thumbnail {
         max-width: 100%;
@@ -254,20 +314,15 @@
         }
       }
 
-      /* Potion Animation */
-
-      .potion {
-          width: 100%;
-          height:100vh;
-      }
-
-      .bubbles{
+      /* Potion Bubbles Animation */
+      .bubbles {
           position: absolute;
           top: 0;
           left: 0;
           width: 100%;
           height: 100%;
           overflow: hidden;
+          z-index: -1;
       }
 
       .bubbles li {
@@ -279,7 +334,11 @@
           background: rgba(255, 255, 255, 0.2);
           animation: animate 25s linear infinite;
           bottom: -150px;
+          transition: background .3s;
+      }
 
+      .bubbles li:hover {
+        background: var(--accent-color);
       }
 
       .bubbles li:nth-child(1){
@@ -288,7 +347,6 @@
           height: 80px;
           animation-delay: 0s;
       }
-
 
       .bubbles li:nth-child(2){
           left: 10%;
@@ -343,35 +401,38 @@
       }
 
       .bubbles li:nth-child(9){
-          left: 20%;
-          width: 15px;
-          height: 15px;
-          animation-delay: 2s;
-          animation-duration: 35s;
+        left: 20%;
+        width: 15px;
+        height: 15px;
+        animation-delay: 2s;
+        animation-duration: 35s;
       }
 
       .bubbles li:nth-child(10){
-          left: 85%;
-          width: 150px;
-          height: 150px;
-          animation-delay: 0s;
-          animation-duration: 11s;
+        left: 85%;
+        width: 150px;
+        height: 150px;
+        animation-delay: 0s;
+        animation-duration: 11s;
       }
 
       @keyframes animate {
+        0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 1;
+            border-radius: 0;
+        }
 
-          0%{
-              transform: translateY(0) rotate(0deg);
-              opacity: 1;
-              border-radius: 0;
-          }
+        100%{
+            transform: translateY(-1000px) rotate(720deg);
+            opacity: 0;
+            border-radius: 50%;
+        }
+      }
 
-          100%{
-              transform: translateY(-1000px) rotate(720deg);
-              opacity: 0;
-              border-radius: 50%;
-          }
-
+      .nav-link.active {
+        color: var(--primary-color-light);
+        font-weight: bold;
       }
     </style>
   </head>
@@ -381,17 +442,22 @@
         <h1 id="its-a-me" class="no-margin">Gregg Stubberfield</h1>
         <h2 class="headline-title">Frontend Developer</h2>
         <p class="no-margin">I create solutions for the web.</p>
-        <ul class="hide-on-small-only">
+        <ul class="nav hide-on-med-and-down">
           <li>
-            <a href="#about"><span class="nav-indicator">About</span></a>
+            <a class="nav-link" data-nav-link="about" href="#about"><span>About</span></a>
           </li>
           <li>
-            <a href="#experience"
-              ><span class="nav-indicator">Experience</span></a
+            <a class="nav-link" data-nav-link="experience" href="#experience"
+              ><span>Experience</span></a
             >
           </li>
           <li>
-            <a href="#projects"><span class="nav-indicator">Projects</span></a>
+            <a class="nav-link" data-nav-link="education" href="#education"
+              ><span>Education</span></a
+            >
+          </li>
+          <li>
+            <a class="nav-link" data-nav-link="projects" href="#projects"><span>Projects</span></a>
           </li>
         </ul>
       </div>
@@ -410,29 +476,28 @@
           </a>
         </li>
       </ul>
-      <div class="potion" >
-        <ul class="bubbles">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-    </div >
+      <ul class="bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </header>
     <main class="main-content">
-      <section id="about" class="main-section">
+      <section class="main-section">
+        <span id="about" class="section-heading-desktop" style="visibility: hidden;"></span>
         <div class="sticky-title hide-on-large-only">
-          <h3 class="section-title">About</h3>
+          <h3 id="about" class="section-title section-heading">About</h3>
         </div>
         <p class="no-margin">
           Hello! In my free time, I enjoy running 5Ks, breakfast dining, and
-          doting on my dog Bacon. I leisurely play games such as
+          doting on my dog <span class="power-word">Bacon</span>. I leisurely play games such as
           <a
             href=" https://boardgamegeek.com/boardgame/174430/gloomhaven"
             rel="nofollow referrer noopener"
@@ -455,25 +520,31 @@
           >.
         </p>
       </section>
-      <section id="experience" class="main-section">
-        <h3 class="section-title hide-on-med-and-down">Experience</h3>
+      <section class="main-section">
+        <h3 id="experience" class="section-heading-desktop section-heading section-title hide-on-med-and-down">Experience</h3>
         <div class="sticky-title hide-on-large-only">
-          <h3 class="section-title">Experience</h3>
+          <h3 class="section-title section-heading">Experience</h3>
         </div>
         <ul class="list">
           <li class="list-item">
             <div class="row">
-              <div class="col s3 no-padding">
-                <p class="no-margin timeline">2017 — Present</p>
+              <div class="col s2 no-padding">
+                <a href="https://www.bridgewaybentech.com/">
+                  <img
+                    class="thumbnail"
+                    src="images/bridgeway-logo.jpg"
+                    alt="Preview of Bridgeway Logo"
+                  />
+                </a>
               </div>
-              <div class="col s9">
+              <div class="col s10">
                 <h3 class="no-margin">
                   <a href="https://www.bridgewaybentech.com/" target="_blank">
                     <span
                       >Bridgeway Benefit
                       Technologies</span
                     >
-                    <i class="fa fa-arrow-pointer"></i>
+                    <i class="fa fa-flask"></i>
                   </a>
                 </h3>
                 <h3 class="headline-title">Frontend Developer</h3>
@@ -482,6 +553,13 @@
                   login portals. Collaborate with client and across departments
                   during lifecycle and support of implementations.
                 </p>
+                <p>Build various dashboards such as a biometric screening dashboard that shows users
+                  whether their wellness requirements (e.g., blood
+                  pressure, BMI) are met to earn wellness credits.</p>
+                <p>Implement e-Forms such as change of address, enrollment,
+                  and tax forms with varying levels of customization
+                  per client requirements.</p>
+                <p>Integrate with Stripe using Node.js for users to make online payments for health eligibility.</p>
                 <div class="chip">HTML</div>
                 <div class="chip">CSS</div>
                 <div class="chip">SCSS</div>
@@ -489,6 +567,64 @@
                 <div class="chip">jQuery</div>
                 <div class="chip">Node.js</div>
                 <div class="chip">Azure DevOps</div>
+                <h6 class="timeline headline-title">2017 — Present</h6>
+              </div>
+            </div>
+          </li>
+          <li class="list-item">
+            <div class="row">
+              <div class="col s2 no-padding">
+                <a href="https://uwf.edu/hmcse/departments/mathematics-and-statistics/">
+                  <img
+                    class="thumbnail"
+                    src="images/uwf-logo-vertical.png"
+                    alt="Preview of UWF"
+                  />
+                </a>
+              </div>
+              <div class="col s10">
+                  <h3 class="no-margin">
+                    <a href="https://uwf.edu/hmcse/departments/mathematics-and-statistics/"
+                    target="_blank"><span>University of West Florida</span>
+                    <i class="fa fa-flask"></i>
+                  </a>
+                  </h3>
+                  <h3 class="headline-title">Mathematics and Statistics Tutor</h3>
+                </a>
+                <p>Tutored students in every <span class="power-word">math</span class="glow">ematics and statistics course offered at the university, including some computer science courses</p>
+                <p>Aided students in learning how to use educational and statistical software</p>
+                </p>
+                <p>Subbed, proctored, and graded students' tests
+                </p>
+                <h6 class="timeline headline-title">2013 — 2015</h6>
+              </div>
+            </div>
+          </li>
+          <li class="list-item">
+            <div class="row">
+              <div class="col s2 no-padding">
+                <a href="https://www.nwfsc.edu/">
+                  <img
+                    class="thumbnail"
+                    src="images/nwfsc-logo.jpg"
+                    alt="Preview of NWFSC"
+                  />
+                </a>
+              </div>
+              <div class="col s10">
+                  <h3 class="no-margin">
+                    <a href="https://www.nwfsc.edu/"
+                    target="_blank"><span>Northwest Florida State College</span>
+                    <i class="fa fa-flask"></i>
+                  </a>
+                  </h3>
+                  <h3 class="headline-title">Mathematics and Statistics Tutor</h3>
+                </a>
+                <p>Tutored students in every mathematics and statistics course offered at the college.</p>
+                <p>Aided students in learning how to use educational and statistical software.</p>
+                </p>
+                <p>Proctored students' tests and quizzes.</p>
+                <h6 class="timeline headline-title">2012 — 2014</h6>
               </div>
             </div>
           </li>
@@ -496,28 +632,92 @@
         <h3>
           <a href="https://stubberg3.github.io/docs/Gregg_Stubberfield_Resume.pdf" target="_blank">
             <span>View Full Resume</span>
-            <i class="fa fa-arrow-pointer"></i>
+            <i class="fa fa-flask"></i>
           </a>
         </h3>
       </section>
-      <section id="projects" class="main-section">
-        <h3 class="section-title hide-on-med-and-down">Projects</h3>
+      <section class="main-section">
+        <h3 id="education" class="section-heading-desktop section-heading section-title hide-on-med-and-down">Education</h3>
         <div class="sticky-title hide-on-large-only">
-          <h3 class="section-title">Projects</h3>
+          <h3 class="section-title section-heading">Education</h3>
         </div>
         <ul class="list">
           <li class="list-item">
             <div class="row">
-              <div class="col s3 no-padding">
+              <div class="col s2 no-padding">
+                <a href="https://uwf.edu/">
+                  <img
+                    class="thumbnail"
+                    src="images/uwf-logo-vertical.png"
+                    alt="Preview of UWF"
+                  />
+                </a>
+              </div>
+              <div class="col s10">
+                  <h3 class="no-margin">
+                    <a href="https://uwf.edu/"
+                    target="_blank"><span>University of West Florida</span>
+                    <i class="fa fa-flask"></i>
+                  </a>
+                  </h3>
+                  <h3 class="headline-title">B.S., Mathematical Sciences</h3>
+                  <h4 class="headline-title" style="margin-bottom: 0;"><em>Computer Science Minor</em></h4>
+                </a>
+                <p>UWF Mathematical Association (Vice President)</p>
+                <p>Mathematics and Statistics Tutor</p>
+                <p>Teacher's Assistant</p>
+                <h6 class="timeline headline-title">2013 — 2015</h6>
+              </div>
+            </div>
+          </li>
+          <li class="list-item">
+            <div class="row">
+              <div class="col s2 no-padding">
+                <a href="https://www.nwfsc.edu/">
+                  <img
+                    class="thumbnail"
+                    src="images/nwfsc-logo.jpg"
+                    alt="Preview of NWFSC"
+                  />
+                </a>
+              </div>
+              <div class="col s10">
+                  <h3 class="no-margin">
+                    <a href="https://www.nwfsc.edu/"
+                    target="_blank"><span>Northwest Florida State College</span>
+                    <i class="fa fa-flask"></i>
+                  </a>
+                  </h3>
+                  <h3 class="headline-title">AA, Pre-Engineering</h3>
+                </a>
+                <p>Asian Pop-culture Club (President)</p>
+                <p>Society of American Military Engineers (Secretary);</p>
+                </p>
+                <p>Mathematics Tutoring <span class="power-word">Lab</span> (Volunteer and Employee)</p>
+                <h6 class="timeline headline-title">2011 - 2013</h6>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <section class="main-section">
+        <h3 id="projects" class="section-heading-desktop section-heading section-title hide-on-med-and-down">Projects</h3>
+        <div class="sticky-title hide-on-large-only">
+          <h3 class="section-title section-heading">Projects</h3>
+        </div>
+        <ul class="list">
+          <li class="list-item">
+            <div class="row">
+              <div class="col s2 no-padding">
                 <a href="https://codeforphilly.org/projects/balancer">
                   <img class="thumbnail" src="images/balancer_social_graphic.jpg" alt="Preview of Balancer Social Graphic">
                 </a>
               </div>
-              <div class="col s9">
+              <div class="col s10">
                   <h3 class="no-margin">
                     <a href="https://codeforphilly.org/projects/balancer"
                     target="_blank"><span>Balancer · AI-powered Bipolar Medication Decision Support App</span>
-                    <i class="fa fa-arrow-pointer"></i>
+                    <i class="fa fa-flask"></i>
                   </a>
                   </h3>
                   <h3 class="headline-title">Volunteer</h3>
@@ -534,12 +734,13 @@
                 <div class="chip">PostgreSQL</div>
                 <div class="chip">OpenAI</div>
                 <div class="chip">AWS S3</div>
+                <h6 class="timeline headline-title">2024 - Present</h6>
               </div>
             </div>
           </li>
           <li class="list-item">
             <div class="row">
-              <div class="col s3 no-padding">
+              <div class="col s2 no-padding">
                 <a href="https://weather-app-sbcg.onrender.com/">
                   <img
                     class="thumbnail"
@@ -548,19 +749,19 @@
                   />
                 </a>
               </div>
-              <div class="col s9">
+              <div class="col s10">
                 <h3 class="no-margin">
                   <a
                     href="https://weather-app-sbcg.onrender.com/"
                     target="_blank"
                   >
                     <span>Weather Dashboard</span>
-                    <i class="fa fa-arrow-pointer"></i>
+                    <i class="fa fa-flask"></i>
                   </a>
                 </h3>
                 <h3 class="headline-title">Personal Project</h3>
                 <p>
-                  Current weather and forecast data using the
+                  Current <span class="power-word">weather</span> and forecast data using the
                   <a href="https://openweathermap.org/" target="_blank"
                     >OpenWeatherMap</a
                   >
@@ -594,5 +795,6 @@
       src="https://kit.fontawesome.com/1b2c37e814.js"
       crossorigin="anonymous"
     ></script>
+    <script src="index.js"></script>
   </body>
 </html>
