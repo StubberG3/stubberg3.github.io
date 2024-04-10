@@ -5,10 +5,13 @@ var $sections = {};
 var sectionIdToNavLink = {};
 
 $(document).ready(function() {
+  // init modal
+  $('.modal').modal();
+
   // cache the navigation links
   $navLinks = $('.nav-link');
   // cache (in reversed order) the sections
-  $sections = $($('.section-heading-desktop').get().reverse());
+  $sections = $($('.section-heading').get().reverse());
 
   // map each section id to their corresponding navigation link
   sectionIdToNavLink = {};

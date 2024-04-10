@@ -61,6 +61,18 @@
         --tw-backdrop-blur: blur(8px);
       }
 
+      .primary-color-text {
+        color: var(--primary-color);
+      }
+
+      .primary-color-light-text {
+        color: var(--primary-color-light);
+      }
+
+      .primary-color-dark {
+        background-color: var(--primary-color-dark) !important;
+      }
+
       html {
         font-family: var(--body-font-family);
         scroll-behavior: smooth;
@@ -133,6 +145,14 @@
         font-size: 1.5rem;
       }
 
+      .headline {
+        z-index: 0;
+      }
+      .headline > div,
+      .socials {
+        z-index: 1;
+      }
+
       .timeline {
         text-transform: uppercase;
         font-size: .9rem;
@@ -188,7 +208,14 @@
       .main-content {
         display: flex;
         flex-direction: column;
-        flex: 1 1 50%;
+      }
+
+      .headline {
+        flex: 1 1 40%;
+      }
+
+      .main-content {
+        flex: 1 1 60%;
       }
 
       .nav li {
@@ -280,6 +307,7 @@
 
       @media screen and (max-width: 993px) {
         .bubbles {
+          position: absolute;
           overflow: hidden;
         }
 
@@ -297,7 +325,6 @@
 
         .sticky-title {
           position: sticky;
-          width: 100vw;
           background-color: rgba(24, 18, 35, .75);
           top: 0;
           backdrop-filter: blur(3px);
@@ -309,6 +336,10 @@
       @media screen and (min-width: 994px) {
         html {
           font-size: 16px;
+        }
+
+        #about {
+          margin-top: 0;
         }
 
         .headline {
@@ -330,17 +361,31 @@
 
         .main-content {
           padding-right: 6rem;
+          padding-left: 6rem;
         }
+
+        .bubbles {
+          position: absolute;
+          overflow: hidden;
+        }
+      }
+
+      .headline {
+        background-color: #181223;
+      }
+
+      .headline,
+      .modal-content {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23504661' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
       }
 
       /* Potion Bubbles Animation */
       .bubbles {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
       }
 
       .bubbles li {
@@ -350,6 +395,7 @@
           width: 20px;
           height: 20px;
           background: rgba(255, 255, 255, 0.2);
+          background: rgba(78, 64, 106, .2);
           animation: animate 25s linear infinite;
           bottom: -150px;
           transition: background .3s;
@@ -427,7 +473,7 @@
       }
 
       .bubbles li:nth-child(10){
-        left: 85%;
+        left: 15%;
         width: 150px;
         height: 150px;
         animation-delay: 0s;
@@ -436,15 +482,108 @@
 
       @keyframes animate {
         0% {
-            transform: translateY(0) rotate(0deg);
-            opacity: 1;
-            border-radius: 0;
+          transform: translateY(0) rotate(0deg);
+          opacity: 1;
+          border-radius: 0;
         }
 
-        100%{
-            transform: translateY(-1000px) rotate(720deg);
-            opacity: 0;
-            border-radius: 50%;
+        100% {
+          transform: translateY(-1000px) rotate(720deg);
+          opacity: 0;
+          border-radius: 50%;
+        }
+      }
+
+      .waves {
+        z-index: -999;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height:15vh;
+        min-height:100px;
+        max-height:150px;
+      }
+
+      /* Animation */
+
+      .parallax > use:nth-child(1) {
+        animation: move-backever 25s cubic-bezier(.55,.5,.45,.5) infinite, color-rotate-1 5s infinite;
+        animation-delay: -2s;
+        animation-duration: 25s;
+      }
+      .parallax > use:nth-child(2) {
+        animation: move-backever 25s cubic-bezier(.55,.5,.45,.5) infinite, color-rotate-2 5s infinite;
+        animation-delay: -6s;
+        animation-duration: 15s;
+      }
+      .parallax > use:nth-child(3) {
+        animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite, color-rotate-3 5s infinite;
+        animation-delay: -5s;
+        animation-duration: 30s;
+      }
+      .parallax > use:nth-child(4) {
+        animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite, color-rotate-4 5s infinite;
+        animation-delay: -10s;
+        animation-duration: 60s;
+      }
+      @keyframes move-forever {
+        0% {
+          transform: translate3d(-90px,0,0);
+        }
+        100% {
+          transform: translate3d(85px,0,0);
+        }
+      }
+      @keyframes move-backever {
+        0% {
+          transform: translate3d(90px,0,0);
+        }
+        100% {
+          transform: translate3d(-85px,0,0);
+        }
+      }
+      @keyframes color-rotate-4 {
+        0% {
+          fill: rgb(78, 64, 106);
+        }
+
+        100% {
+          fill: rgba(78, 64, 106);
+        }
+      }
+      @keyframes color-rotate-3 {
+        0% {
+          fill: rgba(78, 64, 106, .66);
+        }
+
+        100% {
+          fill: rgba(78, 64, 106, .66);
+        }
+      }
+      @keyframes color-rotate-2 {
+        0% {
+          fill: rgba(78, 64, 106, .33);
+        }
+
+        100% {
+          fill: rgba(78, 64, 106, .33);
+        }
+      }
+      @keyframes color-rotate-1 {
+        0% {
+          fill: rgba(78, 64, 106, .1);
+        }
+
+        100% {
+          fill: rgba(78, 64, 106, .1);
+        }
+      }
+      /*Shrinking for mobile*/
+      @media (max-width: 601px) {
+        .waves {
+          height: 100px;
+          min-height: 100px;
         }
       }
     </style>
@@ -455,8 +594,8 @@
         <h1 id="its-a-me" class="no-margin">Gregg Stubberfield</h1>
         <h2 class="headline-title">Web Developer</h2>
         <p class="no-margin">I concoct solutions for the web.</p>
-        <ul class="nav hide-on-med-and-down">
-          <li>
+        <ul class="nav">
+          <li class="hide-on-med-and-down">
             <a class="nav-link" data-nav-link="about" href="#about"><span>About</span></a>
           </li>
           <li>
@@ -501,47 +640,80 @@
         <li data-bubble="9"></li>
         <li data-bubble="10"></li>
       </ul>
+      <!--Waves Container-->
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+      viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+      <!--Waves end-->
     </header>
     <main class="main-content">
       <section class="main-section">
-        <span id="about" class="section-heading-desktop" style="visibility: hidden;"></span>
-        <div class="sticky-title hide-on-large-only">
+        <div class="sticky-title">
           <h3 id="about" class="section-title section-heading">About</h3>
         </div>
         <p class="no-margin">
-          Hello! In my free time, I enjoy running 5Ks, breakfast dining, and
-          doting on my dog <span class="power-word">Bacon</span>. I leisurely play games such as
-          <a
-            href=" https://boardgamegeek.com/boardgame/174430/gloomhaven"
-            rel="nofollow referrer noopener"
-            >Gloomhaven</a
-          >
-          and
-          <a href="https://www.chess.com/" rel="nofollow referrer noopener"
-            >Chess</a
-          >, and have competively played
-          <a
-            href="https://boardgamegeek.com/boardgame/147020/star-realms"
-            rel="nofollow referrer noopener"
-            >Star Realms</a
-          >
-          and
+          Hey, I'm Gregg. My first encounter with web development was in 2009 when I made a portfolio website for my high school senior project. In college I majored in mathematics, but my passion for programming compelled me to also get a minor in computer science. Nowadays I build websites for my clients at
+          <a href="https://www.bridgewaybentech.com/" target="_blank">
+            <span
+              >Bridgeway Benefit Technologies</span
+            ></a>.
+        </p>
+        <p>In my free time, I enjoy running 5Ks, finding new breakfast spots, and
+          doting on my dog <span class="power-word">Bacon</span>. Speaking of dogs, I used to be power-ranked in Philly for playing Duck Hunt Dog in
           <a
             href="https://www.smashbros.com/en_US/index.html"
             rel="nofollow referrer noopener"
             >Super Smash Brothers</a
+          >. I leisurely play board games such as
+          <a
+            href=" https://boardgamegeek.com/boardgame/174430/gloomhaven"
+            rel="nofollow referrer noopener"
+            >Gloomhaven</a
+          > and have competively played the deck-building game
+          <a
+            href="https://boardgamegeek.com/boardgame/147020/star-realms"
+            rel="nofollow referrer noopener"
+            >Star Realms</a
           >.
+          If you're interested in board games and will be in the Philadelphia area in December, I highly recommend <a href="https://unplugged.paxsite.com/en-us.html" target="_blank">PAX Unplugged</a>.
         </p>
+        <ul>
+          <li>
+            <p><i style="margin-right: 3px;" class="fa fa-comments cyan-text"></i> Let's chat? Shoot me an
+              <a target="_blank" href="mailto:stubberg3@gmail.com?subject=I have an opportunity for you&amp;body=Hi Gregg,%0A%0AI was looking at your website and...">
+                <span>email</span></a>.
+            </p>
+          </li>
+          <li>
+            <p><i style="margin-right: 3px;" class="fa fa-chess-knight green-text"></i> Up for a challenge? Play me in <a href="https://www.chess.com/member/borknbeans" rel="nofollow referrer noopener"
+              >Chess</a
+            >!</p>
+          </li>
+          <li>
+            <p><i style="margin-right: 3px;" class="fa fa-palette primary-color-light-text"></i> Why is purple my favorite color? <span class="primary-color-light-text" style="letter-spacing: 1px; font-weight: bolder;">It's cool!</span></p>
+          </li>
+          <li>
+            <p><i style="margin-right: 3px;" class="fa fa-bacon pink-text"></i> Just want to see Bacon? <a href="#!" data-target="bacon" class="modal-trigger">Me too.</ah></p>
+          </li>
+        </ul>
       </section>
       <section class="main-section">
-        <h3 id="experience" class="section-heading-desktop section-heading section-title hide-on-med-and-down">Experience</h3>
-        <div class="sticky-title hide-on-large-only">
-          <h3 class="section-title section-heading">Experience</h3>
+        <div class="sticky-title">
+          <h3 id="experience" class="section-title section-heading">Experience</h3>
         </div>
         <ul class="list">
           <li class="list-item">
             <div class="row">
-              <div class="col s2 no-padding">
+              <div class="col s2 l1 no-padding">
                 <a href="https://www.bridgewaybentech.com/">
                   <img
                     class="thumbnail"
@@ -550,7 +722,7 @@
                   />
                 </a>
               </div>
-              <div class="col s10">
+              <div class="col s10 l11">
                 <h3 class="no-margin">
                   <a href="https://www.bridgewaybentech.com/" target="_blank">
                     <span
@@ -587,7 +759,7 @@
           </li>
           <li class="list-item">
             <div class="row">
-              <div class="col s2 no-padding">
+              <div class="col s2 l1 no-padding">
                 <a href="https://uwf.edu/hmcse/departments/mathematics-and-statistics/">
                   <img
                     class="thumbnail"
@@ -596,7 +768,7 @@
                   />
                 </a>
               </div>
-              <div class="col s10">
+              <div class="col s10 l11">
                   <h3 class="no-margin">
                     <a href="https://uwf.edu/hmcse/departments/mathematics-and-statistics/"
                     target="_blank">University of West
@@ -608,10 +780,10 @@
                   </h3>
                   <h3 class="headline-title">Mathematics and Statistics Tutor</h3>
                 </a>
-                <p>Tutored students in every <span class="power-word">math</span class="glow">ematics and statistics course offered at the university, including some computer science courses</p>
-                <p>Aided students in learning how to use educational and statistical software</p>
+                <p>Tutored students in every <span class="power-word">math</span class="glow">ematics and statistics course offered at the university, including some computer science courses.</p>
+                <p>Aided students in learning how to use educational and statistical software.</p>
                 </p>
-                <p>Subbed, proctored, and graded students' tests
+                <p>Subbed, proctored, and graded students' tests.
                 </p>
                 <h6 class="timeline headline-title">2013 — 2015</h6>
               </div>
@@ -619,7 +791,7 @@
           </li>
           <li class="list-item">
             <div class="row">
-              <div class="col s2 no-padding">
+              <div class="col s2 l1 no-padding">
                 <a href="https://www.nwfsc.edu/">
                   <img
                     class="thumbnail"
@@ -628,7 +800,7 @@
                   />
                 </a>
               </div>
-              <div class="col s10">
+              <div class="col s10 l11">
                   <h3 class="no-margin">
                     <a href="https://www.nwfsc.edu/"
                     target="_blank"><span>Northwest Florida State</span>
@@ -660,14 +832,13 @@
         </h3>
       </section>
       <section class="main-section">
-        <h3 id="education" class="section-heading-desktop section-heading section-title hide-on-med-and-down">Education</h3>
-        <div class="sticky-title hide-on-large-only">
-          <h3 class="section-title section-heading">Education</h3>
+        <div class="sticky-title">
+          <h3 id="education" class="section-title section-heading">Education</h3>
         </div>
         <ul class="list">
           <li class="list-item">
             <div class="row">
-              <div class="col s2 no-padding">
+              <div class="col s2 l1 no-padding">
                 <a href="https://uwf.edu/">
                   <img
                     class="thumbnail"
@@ -676,7 +847,7 @@
                   />
                 </a>
               </div>
-              <div class="col s10">
+              <div class="col s10 l11">
                   <h3 class="no-margin">
                     <a href="https://uwf.edu/"
                     target="_blank"><span>University of West</span>
@@ -698,7 +869,7 @@
           </li>
           <li class="list-item">
             <div class="row">
-              <div class="col s2 no-padding">
+              <div class="col s2 l1 no-padding">
                 <a href="https://www.nwfsc.edu/">
                   <img
                     class="thumbnail"
@@ -707,7 +878,7 @@
                   />
                 </a>
               </div>
-              <div class="col s10">
+              <div class="col s10 l11">
                   <h3 class="no-margin">
                     <a href="https://www.nwfsc.edu/"
                     target="_blank"><span>Northwest Florida State</span>
@@ -722,7 +893,7 @@
                 <p>Asian Pop-culture Club (President)</p>
                 <p>Society of American Military Engineers (Secretary);</p>
                 </p>
-                <p>Mathematics Tutoring <span class="power-word">Lab</span> (Volunteer and Employee)</p>
+                <p>Mathematics Tutoring <a href="#" class="power-word">Lab</a> (Volunteer and Employee)</p>
                 <h6 class="timeline headline-title">2011 - 2013</h6>
               </div>
             </div>
@@ -730,19 +901,18 @@
         </ul>
       </section>
       <section class="main-section">
-        <h3 id="projects" class="section-heading-desktop section-heading section-title hide-on-med-and-down">Projects</h3>
-        <div class="sticky-title hide-on-large-only">
-          <h3 class="section-title section-heading">Projects</h3>
+        <div class="sticky-title">
+          <h3 id="projects" class="section-title section-heading">Projects</h3>
         </div>
         <ul class="list">
           <li class="list-item">
             <div class="row">
-              <div class="col s2 no-padding">
+              <div class="col s2 l1 no-padding">
                 <a href="https://codeforphilly.org/projects/balancer">
                   <img class="thumbnail" src="images/balancer_social_graphic.jpg" alt="Preview of Balancer Social Graphic">
                 </a>
               </div>
-              <div class="col s10">
+              <div class="col s10 l11">
                   <h3 class="no-margin">
                     <a href="https://codeforphilly.org/projects/balancer"
                     target="_blank"><span>Balancer · AI-powered Bipolar Medication Decision Support</span>
@@ -769,7 +939,7 @@
           </li>
           <li class="list-item">
             <div class="row">
-              <div class="col s2 no-padding">
+              <div class="col s2 l1 no-padding">
                 <a href="https://weather-app-sbcg.onrender.com/">
                   <img
                     class="thumbnail"
@@ -778,7 +948,7 @@
                   />
                 </a>
               </div>
-              <div class="col s10">
+              <div class="col s10 l11">
                 <h3 class="no-margin">
                   <a
                     href="https://weather-app-sbcg.onrender.com/"
@@ -816,6 +986,17 @@
       </section>
       <footer>Coded in <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a>. Built with <a href="https://materializecss.com/" target="_blank">Materialize CSS</a> and deployed using <a href="https://pages.github.com/" target="_blank">Github Pages</a>.</footer>
     </main>
+    <aside>
+      <!-- Modal Structure -->
+      <div id="bacon" class="modal primary-color">
+        <div class="modal-content center">
+          <img style="max-height: 400px; border: 2px solid pink; border-radius: 3px;" src="images/bacon-being-silly.jpeg" alt="Bacon Being Silly">
+        </div>
+        <div class="modal-footer primary-color-dark">
+          <a href="#!" class="modal-close btn-flat white-text">Close</a>
+        </div>
+      </div>
+    </aside>
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
